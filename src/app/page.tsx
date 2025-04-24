@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 
 const notifications = [
   {
@@ -19,6 +20,15 @@ const notifications = [
     text: "Seeking an out-of-this-world adventure partner.",
   },
 ];
+
+const logoVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { type: "spring", stiffness: 100, damping: 10 },
+  },
+};
 
 const containerVariants: Variants = {
   hidden: {},
@@ -54,6 +64,22 @@ export default function SplashPage() {
 
   return (
     <div className="min-h-screen bg-black flex flex-col items-center justify-center p-4">
+      {/* Animated logo placeholder: replace '/logo.png' with your asset */}
+      <motion.div
+        className="mb-8"
+        variants={logoVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <Image
+          src="/logo.png"
+          alt="Logo"
+          width={240}
+          height={240}
+          className="object-contain"
+        />
+      </motion.div>
+
       <motion.div
         className="space-y-6"
         variants={containerVariants}
@@ -91,13 +117,13 @@ export default function SplashPage() {
           type="email"
           required
           placeholder="Enter your email"
-          className="w-full p-3 rounded-md border border-gray-300 mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full p-3 rounded-md border border-gray-300 mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <button
           type="submit"
-          className="w-full p-3 bg-indigo-600 text-white rounded-md font-semibold hover:bg-indigo-700 transition"
+          className="w-full p-3 bg-black text-white rounded-md font-semibold hover:bg-indigo-700 transition"
         >
           Sign Up
         </button>
