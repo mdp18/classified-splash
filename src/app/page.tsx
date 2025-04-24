@@ -111,7 +111,7 @@ export default function SplashPage() {
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          Join the Waitlist
+          Join the Waitlist Today
         </h2>
         <input
           type="email"
